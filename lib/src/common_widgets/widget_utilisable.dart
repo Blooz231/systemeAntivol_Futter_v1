@@ -5,6 +5,7 @@ import 'dart:js';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:systeme_anti_vol_v1/src/constants/constantes.dart';
+import 'package:systeme_anti_vol_v1/src/features/authentification/screens/sign_in.dart';
 import 'package:systeme_anti_vol_v1/src/features/authentification/screens/sign_up.dart';
 
 Image logoWidget(String imageName) {
@@ -46,55 +47,42 @@ TextField reutilisableTextField(String text, IconData icon, bool isPasswordType,
   );
 }
 
-Row signUpOption() {
-  return Row(
-    children: [
-      Expanded(
-        child: FadeInUp(
-          child: MaterialButton(
-            height: 50,
-            color: Colors.blue,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
+FadeInUp signUpOption(BuildContext context) {
+  return FadeInUp(
+    duration: const Duration(milliseconds: 1500),
+    child: Container(
+      width: MediaQuery.of(context).size.width,
+      height: 35,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            "Vous n'avez pas un compte ?",
+            style: TextStyle(
+              color: Colors.white,
             ),
-            child: Text(
-              "S'inscrire",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: () {
-              Navigator.pushReplacement(
-                context as BuildContext,
-                MaterialPageRoute(builder: (context) => SignUpScreen()),
-              );
-            },
           ),
-        ),
+          TextButton(
+              child: const Text(
+                "S'inscrire",
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.right,
+              ),
+              onPressed: () {
+                var materialPageRoute = MaterialPageRoute(
+                  builder: (context) => SignUpScreen(),
+                );
+                Navigator.push(
+                  context as BuildContext,
+                  materialPageRoute,
+                );
+              }),
+        ],
       ),
-      brW30,
-      Expanded(
-        child: FadeInUp(
-          child: MaterialButton(
-            onPressed: () {},
-            height: 50,
-            color: Colors.blue[200],
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: const Center(
-                child: Text(
-              "Google",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            )),
-          ),
-        ),
-      )
-    ],
+    ),
   );
 }
 
@@ -108,17 +96,20 @@ FadeInUp forgetPassword(BuildContext context) {
       child: TextButton(
           child: const Text(
             "Forgot Password?",
-            style: TextStyle(color: Colors.blue),
+            style: TextStyle(
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+            ),
             textAlign: TextAlign.right,
           ),
           onPressed: () {
-            var materialPageRoute = MaterialPageRoute(
-              builder: (context) => SignUpScreen(),
-            );
-            Navigator.push(
-              context as BuildContext,
-              materialPageRoute,
-            );
+            // var materialPageRoute = MaterialPageRoute(
+            //   builder: (context) => SignUpScreen(),
+            // );
+            // Navigator.push(
+            //   context as BuildContext,
+            //   materialPageRoute,
+            // );
           }),
     ),
   );
@@ -132,9 +123,14 @@ FadeInUp login() {
         horizontal: 150.0,
       ),
       child: MaterialButton(
-        onPressed: () {},
+        onPressed: () {
+          // Navigator.push(
+          //   context as BuildContext,
+          //   MaterialPageRoute(builder: (context) => SignUpScreen()),
+          // );
+        },
         height: 50,
-        color: Colors.orange[900],
+        color: Color.fromARGB(255, 4, 98, 136),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
         ),
@@ -152,16 +148,90 @@ FadeInUp login() {
   );
 }
 
+FadeInUp inscription() {
+  return FadeInUp(
+    duration: const Duration(milliseconds: 1600),
+    child: Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 150.0,
+      ),
+      child: MaterialButton(
+        onPressed: () {
+          // Navigator.push(
+          //   context as BuildContext,
+          //   MaterialPageRoute(builder: (context) => SignUpScreen()),
+          // );
+        },
+        height: 50,
+        color: Color.fromARGB(255, 4, 98, 136),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: const Center(
+          child: Text(
+            "S'inscrire",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 BoxDecoration decores() {
   return BoxDecoration(
-    color: Colors.transparent,
-    borderRadius: BorderRadius.circular(10),
-    boxShadow: const [
-      BoxShadow(
-        color: Color.fromRGBO(54, 142, 237, 0.294),
-        blurRadius: 20,
-        offset: Offset(0, 20),
-      )
-    ],
+    gradient: LinearGradient(
+      colors: [
+        Colors.blue.shade900,
+        Colors.blue.shade600,
+        Colors.blue.shade300,
+        Colors.blue.shade200,
+        Colors.blue.shade100,
+      ],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+    ),
+  );
+}
+
+FadeInUp compte_existe(BuildContext context) {
+  return FadeInUp(
+    duration: const Duration(milliseconds: 1500),
+    child: Container(
+      width: MediaQuery.of(context).size.width,
+      height: 35,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            "Vous avez un compte ?",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          TextButton(
+              child: const Text(
+                "Se connecter",
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.right,
+              ),
+              onPressed: () {
+                var materialPageRoute = MaterialPageRoute(
+                  builder: (context) => SignInScreen(),
+                );
+                Navigator.push(
+                  context as BuildContext,
+                  materialPageRoute,
+                );
+              }),
+        ],
+      ),
+    ),
   );
 }
