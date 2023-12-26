@@ -25,6 +25,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
             child: Column(
               children: [
+                logoWidget("images/logo1.png"),
+                br10,
                 reutilisableTextField(
                   "Email ou UserName",
                   Icons.person_outline,

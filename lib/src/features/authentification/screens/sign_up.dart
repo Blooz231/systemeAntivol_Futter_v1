@@ -28,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
             child: Column(
               children: [
+                logoWidget("images/logo1.png"),
                 br10,
                 reutilisableTextField(
                   "Entrer votre Nom utilisteurs",

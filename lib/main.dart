@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:systeme_anti_vol_v1/src/features/authentification/screens/dashboard.dart';
 import 'package:systeme_anti_vol_v1/src/features/authentification/screens/sign_in.dart';
 import 'package:systeme_anti_vol_v1/src/features/authentification/screens/sign_up.dart';
 import 'package:systeme_anti_vol_v1/src/utils/themes/thmes.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       body: Center(
         child: Container(
           width: double.infinity,
-          child: SignInScreen(),
+          child: DashboardScreen(),
         ),
       ),
     );

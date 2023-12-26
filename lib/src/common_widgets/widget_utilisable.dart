@@ -5,6 +5,7 @@ import 'dart:js';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:systeme_anti_vol_v1/src/constants/constantes.dart';
+import 'package:systeme_anti_vol_v1/src/features/authentification/screens/dashboard.dart';
 import 'package:systeme_anti_vol_v1/src/features/authentification/screens/sign_in.dart';
 import 'package:systeme_anti_vol_v1/src/features/authentification/screens/sign_up.dart';
 
@@ -124,10 +125,10 @@ FadeInUp login() {
       ),
       child: MaterialButton(
         onPressed: () {
-          // Navigator.push(
-          //   context as BuildContext,
-          //   MaterialPageRoute(builder: (context) => SignUpScreen()),
-          // );
+          Navigator.push(
+            context as BuildContext,
+            MaterialPageRoute(builder: (context) => DashboardScreen()),
+          );
         },
         height: 50,
         color: Color.fromARGB(255, 4, 98, 136),
