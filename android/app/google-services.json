@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "845207903452",
+    "project_id": "systemantivol",
+    "storage_bucket": "systemantivol.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845207903452:android:fcd4b5e5795e226314e819",
+        "android_client_info": {
+          "package_name": "com.example.systeme_anti_vol_v1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2MXNy3xgo82ArfMcQfj_O08ezg-pBsDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
