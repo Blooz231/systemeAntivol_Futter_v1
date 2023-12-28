@@ -1,11 +1,7 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:js';
+// ignore_for_file: prefer_const_constructors, use_function_type_syntax_for_parameters, non_constant_identifier_names, sized_box_for_whitespace, unnecessary_cast, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:systeme_anti_vol_v1/src/constants/constantes.dart';
-import 'package:systeme_anti_vol_v1/src/features/authentification/screens/dashboard.dart';
 import 'package:systeme_anti_vol_v1/src/features/authentification/screens/sign_in.dart';
 import 'package:systeme_anti_vol_v1/src/features/authentification/screens/sign_up.dart';
 
@@ -19,9 +15,15 @@ Image logoWidget(String imageName) {
   );
 }
 
-TextField reutilisableTextField(String text, IconData icon, bool isPasswordType,
-    TextEditingController controller) {
-  return TextField(
+TextFormField reutilisableTextField(
+  String text,
+  IconData icon,
+  bool isPasswordType,
+  TextEditingController controller,
+  void Function(String?)? onSaved,
+  String? Function(String?)? validator,
+) {
+  return TextFormField(
     controller: controller,
     obscureText: isPasswordType,
     enableSuggestions: !isPasswordType,
@@ -42,9 +44,10 @@ TextField reutilisableTextField(String text, IconData icon, bool isPasswordType,
           borderRadius: BorderRadius.circular(30.0),
           borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
     ),
-    keyboardType: isPasswordType
-        ? TextInputType.visiblePassword
-        : TextInputType.emailAddress,
+    keyboardType:
+        isPasswordType ? TextInputType.text : TextInputType.emailAddress,
+    onSaved: onSaved,
+    validator: validator,
   );
 }
 
@@ -116,38 +119,8 @@ FadeInUp forgetPassword(BuildContext context) {
   );
 }
 
-FadeInUp login() {
-  return FadeInUp(
-    duration: const Duration(milliseconds: 1600),
-    child: Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 150.0,
-      ),
-      child: MaterialButton(
-        onPressed: () {
-          Navigator.push(
-            context as BuildContext,
-            MaterialPageRoute(builder: (context) => DashboardScreen()),
-          );
-        },
-        height: 50,
-        color: Color.fromARGB(255, 4, 98, 136),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-        ),
-        child: const Center(
-          child: Text(
-            "Login",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
-}
+// FadeInUp login(BuildContext context) {
+// }
 
 FadeInUp inscription() {
   return FadeInUp(
@@ -182,8 +155,15 @@ FadeInUp inscription() {
   );
 }
 
-BoxDecoration decores() {
+BoxDecoration decores(BuildContext context) {
   return BoxDecoration(
+    borderRadius: BorderRadius.circular(20),
+    boxShadow: [
+      BoxShadow(
+          color: Theme.of(context).hintColor.withOpacity(0.2),
+          offset: Offset(0, 10),
+          blurRadius: 20)
+    ],
     gradient: LinearGradient(
       colors: [
         Colors.blue.shade900,
@@ -235,4 +215,14 @@ FadeInUp compte_existe(BuildContext context) {
       ),
     ),
   );
+}
+
+bool validateAndSave() {
+  var globalForm;
+  final form = globalForm.currentState;
+  if (form.validate()) {
+    form.save;
+    return true;
+  }
+  return false;
 }
